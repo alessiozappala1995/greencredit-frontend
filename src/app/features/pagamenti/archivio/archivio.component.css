@@ -1,0 +1,125 @@
+table {
+  width: 100%;
+}
+
+.mt-3{
+	padding: 2%
+}
+
+
+.mt-3 button{
+	padding: 3%;
+	width: 10rem;
+	background: #388e3c;
+}
+
+.positivo {
+  color: green;
+  font-weight: bold;
+}
+.negativo {
+  color: red;
+  font-weight: bold;
+}
+
+.row-info {
+  display: flex;
+  align-items: center;
+}
+
+.label {
+  width: 260px; /* 👈 stessa larghezza per tutte le etichette */
+  font-weight: 600;
+  color: #333;
+}
+
+.value {
+  flex: 1;
+  font-weight: 500;
+  color: #555;
+}
+
+.ricerca-card {
+  height: 100%;
+}
+
+.ricerca-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 46px;
+  align-items: flex-end;
+}
+
+mat-form-field {
+  width: 500px;
+}
+
+.no-records {
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ff0000;
+  padding: 16px;
+}
+
+.saldo-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+h2, h3{
+	text-align: left;
+	font: 400 16px / 24px Roboto, sans-serif;
+    letter-spacing: .03125em;
+    margin: 0 0 16px;
+}
+
+.mat-icon {
+    -webkit-user-select: none;
+    user-select: none;
+    background-repeat: no-repeat;
+    display: inline-block;
+    fill: currentColor;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    font-size: 46px;
+    color: green;
+    cursor: pointer;
+}
+
+.mat-mdc-card {
+	display:inline;
+    flex-direction: column;
+    box-sizing: border-box;
+    position: relative;
+    border-style: solid;
+    border-width: 0;
+    background-color: var(--mdc-elevated-card-container-color, var(--mat-app-surface-container-low));
+    border-color: var(--mdc-elevated-card-container-color, var(--mat-app-surface-container-low));
+    border-radius: var(--mdc-elevated-card-container-shape, var(--mat-app-corner-medium));
+    box-shadow: var(--mdc-elevated-card-container-elevation, var(--mat-app-level1));
+}
+
+.icon-menu{
+	height: 60%;
+	cursor: pointer;
+}
+
+.mat-mdc-menu-content {
+    margin: 0;
+    outline: 0;
+}
+
+.saldo-value {
+  font-size: 62px;               
+  font-weight: bold;             
+  color: #4CAF50;                
+  background-color: #f0f8ff;     
+  display: inline-block;         
+}
+
+.info{
+	text-align: left;
+}

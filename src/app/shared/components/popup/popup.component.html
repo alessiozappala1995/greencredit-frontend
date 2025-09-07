@@ -1,0 +1,12 @@
+<div class="popup-overlay" (click)="closePopup()" [ngStyle]="{'background-color': overlayColor}">
+  <div class="popup-content" (click)="$event.stopPropagation()" [ngStyle]="{'background-color': popupBgColor, 'color': popupTextColor}">
+    
+    <!-- Pulsante di chiusura in alto a destra -->
+    <button class="close-button" (click)="closePopup()">×</button>
+
+    <!-- Titolo e messaggio -->
+    <h2>{{ title }}</h2>
+    <p>{{ message }}</p>
+
+  </div>
+</div>

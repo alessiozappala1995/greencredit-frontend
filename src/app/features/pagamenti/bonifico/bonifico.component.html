@@ -1,0 +1,104 @@
+<form class="row bonifico-card" [formGroup]="bonificoForm" (ngSubmit)="inviaBonifico()">
+<div class="row">
+	<h2 class="saldo-title">Bonifico</h2>
+</div>
+  <!-- Colonna sinistra: Dati pagamento -->
+  <div class="col-6">
+    <mat-card class="bonifico-card">
+      <mat-card-header>
+        <div class="header-content">
+          <h3 class="saldo-title">Dati pagamento</h3>
+        </div>
+      </mat-card-header>
+
+      <mat-card-content>
+        <div>
+          <!-- Campi statici (da query Angular) -->
+          <div class="form-group">
+            <label>Numero conto</label>
+            <div class="static-field">{{ numeroConto }}</div>
+          </div>
+          <div class="form-group">
+            <label>Utente</label>
+            <div class="static-field" *ngFor="let utente of contoInfo?.utenti">{{ utente?.nome }} {{ utente?.cognome }}</div>
+          </div>
+          <div class="form-group">
+            <label>Info conto</label>
+            <div class="static-field">{{ infoConto }}</div>
+          </div>
+
+          <!-- Campi input -->
+          <div class="form-group">
+            <mat-form-field appearance="fill">
+              <mat-label>Importo</mat-label>
+              <input matInput formControlName=importo name="importo" type="number" required />
+            </mat-form-field>
+          </div>
+
+          <div class="form-group">
+            <mat-form-field appearance="fill">
+              <mat-label>Causale</mat-label>
+              <input matInput formControlName=causale name="causale" required/>
+            </mat-form-field>
+          </div>
+
+          <!-- Pulsante invio -->
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- Colonna destra: Dati beneficiario -->
+  <div class="col-6">
+    <mat-card class="bonifico-summary-card">
+    
+       <mat-card-header>
+        <div class="header-content">
+          <h3 class="saldo-title">Dati beneficiario</h3>
+        </div>
+      </mat-card-header>
+      
+ 		<mat-card-content>
+	        <div class="form-group">
+	          <mat-form-field appearance="fill">
+	            <mat-label>Nome e Cognome</mat-label>
+	            <input matInput formControlName="beneficiario" name="beneficiario" required />
+	          </mat-form-field>
+	        </div>
+	
+	        <div class="form-group">
+	          <mat-form-field appearance="fill">
+	            <mat-label>IBAN</mat-label>
+	            <input matInput formControlName=iban name="iban" required  style="text-transform: uppercase" />
+	          </mat-form-field>
+	        </div>
+	
+	        <div class="form-group">
+	          <mat-form-field appearance="fill">
+	            <mat-label>Data di accredito</mat-label>
+	            <input matInput type="text" [value]="dataSolo" required />
+	          </mat-form-field>
+	        </div>
+	        <div class="form-group">
+            	<label>Saldo disponibile</label>
+            	<div class="static-field">{{ saldo | currency: 'EUR'}}</div>
+          	</div>
+ 
+	        <div class="form-group">
+	            <button mat-raised-button color="primary" type="submit">Continua</button>
+	        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</form>
+
+<app-popup
+  *ngIf="isPopupVisible"
+  [title]="popupTitle"
+  [message]="popupMessage"
+  [popupBgColor]="popupColor"
+  [popupTextColor]="popupTest"
+  (close)="chiudiPopup()">
+</app-popup>
+
+<app-modal (confermato)="onConfermato($event)"></app-modal>

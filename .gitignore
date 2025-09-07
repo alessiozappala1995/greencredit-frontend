@@ -1,0 +1,27 @@
+# Node modules
+node_modules/
+
+# Angular build output
+dist/
+out-tsc/
+
+# IDEs and editors
+.vscode/
+.idea/
+.angular/cache/
+
+# Environment files (se vuoi escluderli)
+src/environments/*.js
+src/environments/*.ts
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Misc
+.DS_Store
+
+# Optional: files di sistema e di debug
+*.log
+*.tmp

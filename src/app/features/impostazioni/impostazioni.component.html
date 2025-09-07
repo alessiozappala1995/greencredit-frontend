@@ -1,0 +1,81 @@
+<div class="settings-container">
+	<h1>Impostazioni 🌱</h1>
+
+	<div class="settings-grid">
+
+		<!-- Card Profilo -->
+		<div class="settings-card">
+			<h2>👤 Dati Utente</h2>
+			<form [formGroup]="profileForm" (ngSubmit)="aggiornaProfilo()">
+				<div class="setting-item">
+					<label>Nome:</label> <input type="text" formControlName="nome">
+				</div>
+				<div class="setting-item">
+					<label>Cognome:</label> <input type="text"
+						formControlName="cognome">
+				</div>
+				<div class="setting-item">
+					<label>Email:</label> <input type="email" formControlName="email">
+				</div>
+				<div class="actions">
+					<button class="btn-primary" type="submit"
+						[disabled]="profileForm.invalid">Salva modifiche</button>
+				</div>
+			</form>
+		</div>
+
+		<!-- Card Sostenibilità -->
+		<div class="settings-card sustainability">
+			<h2>🌍 Sostenibilità</h2>
+			<p>Con GreenBank scegli una banca digitale che riduce l’impatto
+				ambientale e promuove un’economia più responsabile. Ogni operazione
+				online è un passo verso un futuro più verde.</p>
+			<ul class="eco-points">
+				<li>📱 Servizi 100% digitali e paperless</li>
+				<li>🌱 Riduzione delle emissioni grazie alla gestione online</li>
+				<li>🤝 Impegno per trasparenza e responsabilità sociale</li>
+			</ul>
+		</div>
+
+		<!-- Card Preferenze -->
+		<div class="settings-card">
+			<h2>⚙️ Preferenze</h2>
+			<div class="info-item">
+				<label>Notifiche Email:</label> <span>Disattive</span>
+			</div>
+			<div class="info-item">
+				<label>Notifiche SMS:</label> <span>Disattive</span>
+			</div>
+			<div class="info-item">
+				<label>Lingua Preferita:</label> <span>Italiano</span>
+			</div>
+		</div>
+
+		<!-- Card Gestione Account -->
+		<div class="settings-card danger">
+			<h2>⚠️ Gestione Account</h2>
+			<p class="warning-text">Puoi disattivare il conto. Questa
+				azione è irreversibile e comporterà la sospensione dell’accesso ai
+				servizi bancari digitali.</p>
+      <button
+        class="btn-danger"
+        (click)="bloccaConto()"
+        [disabled]="!contoAttivo"
+        [ngClass]="{ 'btn-disabled': !contoAttivo }">
+        Disattiva Account
+      </button>
+		</div>
+	</div>
+</div>
+
+<app-popup
+  *ngIf="isPopupVisible"
+  [title]="popupTitle"
+  [message]="popupMessage"
+  [popupBgColor]="popupColor"
+  [popupTextColor]="popupTest"
+  (close)="chiudiPopup()">
+</app-popup>
+
+<app-modal (confermato)="onEditUtente($event)"></app-modal>
+<app-modal (confermato)="onBloccaConto($event)"></app-modal>

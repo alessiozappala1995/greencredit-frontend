@@ -1,0 +1,113 @@
+<div class="container-fluid p-4 home-container">
+	<!-- Sezione Card dinamiche -->
+	<div class="row g-4 mb-4 text-center">
+		<div class="col-md-3 col-sm-6"
+			*ngFor="let card of dashboardCards; let i = index">
+			<mat-card class="home-top-card shadow-sm"
+				(click)="navigateCard(card)" *ngIf="i < 3">
+			<div class="icon-wrapper">
+				<mat-icon>{{ card.icon }}</mat-icon>
+			</div>
+			<div class="card-title mt-2">{{ card.title }}</div>
+			</mat-card>
+
+			<mat-card class="home-top-card shadow-sm" *ngIf="i === 3">
+			<div
+				class="saldo-top-card-content d-flex justify-content-center align-items-center gap-2">
+				<span class="saldo-value fs-5"> {{ isSaldoVisible ?
+					(contoInfo?.conto.saldo | currency: 'EUR') : '*******' }} </span>
+				<mat-icon role="button" class="cursor-pointer"
+					(click)="toggleSaldoVisibility()"> {{ isSaldoVisible ?
+				'visibility_off' : 'visibility' }} </mat-icon>
+			</div>
+			</mat-card>
+		</div>
+	</div>
+
+	<!-- Sezione Info + Grafici + Messaggi -->
+	<div class="row g-4">
+		<!-- Colonna info -->
+		<div class="col-lg-8">
+			<div class="row g-3">
+				<!-- Info Utente -->
+				<div class="col-md-6">
+					<mat-card class="info-card shadow-sm"> <mat-card-header>
+					<h4>Info Utente</h4>
+					</mat-card-header> <mat-card-content>
+					<ul class="list-unstyled">
+						<li *ngFor="let utente of contoInfo?.utenti" class="mb-3">
+							<p>
+								<strong>Utente:</strong> {{ utente?.nome }} {{ utente?.cognome
+								}}
+							</p>
+							<p>
+								<strong>Codice:</strong> {{ utente?.codiceUtente }}
+							</p>
+							<p>
+								<strong>CF:</strong> {{ utente?.codiceFiscale }}
+							</p>
+						</li>
+					</ul>
+					</mat-card-content> </mat-card>
+				</div>
+
+				<!-- Info Conto -->
+				<div class="col-md-6">
+					<mat-card class="info-card shadow-sm"> <mat-card-header>
+					<h4>Info Conto</h4>
+					</mat-card-header> <mat-card-content>
+					<p>
+						<strong>Numero:</strong> {{ contoInfo?.conto?.numero }}
+					</p>
+					<p>
+						<strong>IBAN:</strong> {{ contoInfo?.conto?.iban }}
+					</p>
+					<p>
+						<strong>Creato il:</strong> {{ contoInfo?.conto?.data | date:
+						'short' }}
+					</p>
+					<p>
+						<strong>Tipo:</strong> {{ contoInfo?.conto?.tipo }}
+					</p>
+					</mat-card-content> </mat-card>
+				</div>
+
+				<!-- Grafici -->
+				<div class="col-md-6">
+					<mat-card class="grafico-card shadow-sm h-100"> <mat-card-header>
+					<h4>Movimenti negli ultimi mesi</h4>
+					</mat-card-header> <mat-card-content>
+					<canvas id="transazioniChart"></canvas>
+					</mat-card-content> </mat-card>
+				</div>
+
+				<div class="col-md-6">
+					<mat-card class="grafico-card shadow-sm h-100"> <mat-card-header>
+					<h4>Tipologie di movimenti</h4>
+					</mat-card-header> <mat-card-content>
+					<canvas id="categoriaChart"></canvas>
+					</mat-card-content> </mat-card>
+				</div>
+			</div>
+		</div>
+
+		<!-- Colonna Messaggi -->
+		<div class="col-lg-4">
+			<mat-card class="shadow-sm h-100"> <mat-card-header>
+			<h4>Ultimi Messaggi</h4>
+			</mat-card-header> <mat-card-content>
+			<ul class="list-unstyled">
+				<li *ngFor="let messaggio of contoInfo?.messaggi.slice(0,5)"
+					class="mb-3 p-2 rounded bg-light">
+					<p>
+						<strong>{{ messaggio?.notificationDate | date: 'medium'
+							}}</strong>
+					</p>
+					<p>{{ messaggio?.messaggio.length > 40 ? (messaggio?.messaggio
+						| slice:0:100) + '...' : messaggio?.messaggio }}</p>
+				</li>
+			</ul>
+			</mat-card-content> </mat-card>
+		</div>
+	</div>
+</div>

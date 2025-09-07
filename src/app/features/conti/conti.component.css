@@ -1,0 +1,85 @@
+.container-conti{
+	font-family: Arial, sans-serif;
+	background: linear-gradient(180deg, #f9fbfc 0%, #eef1f4 100%);
+	width: 100%
+}
+
+.row{
+	padding: 2%
+}
+
+table {
+  width: 100%;
+}
+
+.positivo {
+  color: green;
+  font-weight: bold;
+}
+.negativo {
+  color: red;
+  font-weight: bold;
+}
+
+.conto-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 13px;
+  padding: 16px;
+}
+
+.row-info {
+  display: flex;
+  align-items: center;
+}
+
+.label {
+  width: 260px; 
+  font-weight: 600;
+  color: #333;
+  margin-top: 0.5rem;
+}
+
+.value {
+  flex: 1;
+  font-weight: 500;
+  color: #555;
+}
+
+.attivo {
+  color: green;
+  font-weight: bold;
+}
+
+.disattivo {
+  color: red;
+  font-weight: bold;
+}
+
+.ricerca-card {
+  
+  height: 100%;
+}
+
+.mt-3{
+	padding: 5%
+}
+
+
+.mt-3 button{
+	padding: 3%;
+	width: 20%;
+	background: #388e3c;
+}
+
+.ricerca-form {
+  display: block;
+}
+
+mat-form-field {
+  width: 200px;
+}
+
+
+

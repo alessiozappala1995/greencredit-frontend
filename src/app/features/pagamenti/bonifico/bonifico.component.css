@@ -1,0 +1,76 @@
+.col-6 {
+  flex: 1 1 48%;
+}
+
+label{
+	text-align: left;
+	 font-family: Arial, sans-serif;
+    letter-spacing: .03125em;
+    margin: 0 0 16px;
+}
+
+/* Card style */
+mat-card.ricarica-card,
+mat-card.ricarica-summary-card {
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Titolo sezione */
+.saldo-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+h2, h3{
+	text-align: left;
+	font: 400 16px / 24px Roboto, sans-serif;
+    letter-spacing: .03125em;
+    margin: 0 0 16px;
+}
+
+/* Form */
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+/* Campi non modificabili */
+.static-field {
+  font-size: 1rem;
+  padding: 10px 12px;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  color: #555;
+}
+
+/* Campi Angular Material */
+mat-form-field {
+  width: 100%;
+}
+
+/* Pulsante */
+button[type="submit"] {
+  width: 100%;
+  font-weight: bold;
+  background-color: #388e3c;
+}
+
+
+h2{
+	text-align: left;
+	font: 400 16px / 24px Roboto, sans-serif;
+    letter-spacing: .03125em;
+    margin: 0 0 16px;
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .col-6 {
+    flex: 1 1 100%;
+  }
+}

@@ -1,0 +1,19 @@
+<div *ngIf="isVisible" class="modal-overlay" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <button class="close-btn" aria-label="Chiudi" (click)="closeModal()">×</button>
+    <h2>Inserire il codice utente per confermare</h2>
+
+    <input type="text" placeholder="Codice utente" [(ngModel)]="inputConto" />
+
+    <button (click)="conferma()">Conferma</button>
+  </div>
+</div>
+
+<app-popup
+  *ngIf="isPopupVisible"
+  [title]="popupTitle"
+  [message]="popupMessage"
+  [popupBgColor]="popupColor"
+  [popupTextColor]="popupTest"
+  (close)="chiudiPopup()" class="popup">
+</app-popup>

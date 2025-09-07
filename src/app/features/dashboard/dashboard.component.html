@@ -1,0 +1,63 @@
+<mat-drawer-container class="example-container">
+
+  <mat-drawer #drawer class="example-sidenav" mode="side" opened>
+    <nav>
+      <ul class="nav-links">
+        <li routerLinkActive="active">
+          <a routerLink="/dashboard/home">
+            <mat-icon>home</mat-icon>
+            Home
+          </a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/dashboard/conti">
+            <mat-icon>account_balance</mat-icon>
+            Conto
+          </a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/dashboard/pagamenti">
+            <mat-icon>payments</mat-icon>
+            Pagamenti
+          </a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/dashboard/carte">
+            <mat-icon>credit_score</mat-icon>
+            Carte
+          </a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/dashboard/finanziamenti">
+            <mat-icon>account_balance_wallet</mat-icon>
+            Finanziamenti
+          </a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/dashboard/comunicazioni">
+            <mat-icon>notifications</mat-icon>
+            Comunicazioni
+          </a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/dashboard/profilo">
+            <mat-icon>person</mat-icon>
+            Profilo
+          </a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/dashboard/impostazioni">
+            <mat-icon>settings</mat-icon>
+            Impostazioni
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </mat-drawer>
+
+  <!-- Contenuto principale della pagina -->
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+  
+</mat-drawer-container>

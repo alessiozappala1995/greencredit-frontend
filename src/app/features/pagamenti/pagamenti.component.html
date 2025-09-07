@@ -1,0 +1,68 @@
+<div class="dashboard-container">
+  <!-- Sezione Card Superiore -->
+  <div class="row g-4 mb-4 text-center">
+    <mat-tab-group>
+
+      <!-- Bonifico -->
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <div class="tab-label-content full-width">
+            <div class="icon-wrapper">
+              <mat-icon>account_balance_wallet</mat-icon>
+            </div>
+            <span class="card-title">Bonifico</span>
+          </div>
+        </ng-template>
+        <div class="sezione">
+          <app-bonifico></app-bonifico>
+        </div>
+      </mat-tab>
+
+      <!-- Ricarica -->
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <div class="tab-label-content full-width">
+            <div class="icon-wrapper">
+              <mat-icon>smartphone</mat-icon>
+            </div>
+            <span class="card-title">Ricarica telefonica</span>
+          </div>
+        </ng-template>
+        <div class="sezione">
+          <app-ricarica></app-ricarica>
+        </div>
+      </mat-tab>
+
+      <!-- Bollettini -->
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <div class="tab-label-content full-width">
+            <div class="icon-wrapper">
+              <mat-icon>receipt_long</mat-icon>
+            </div>
+            <span class="card-title">Bollettini</span>
+          </div>
+        </ng-template>
+        <div class="sezione">
+          <app-bollettini></app-bollettini>
+        </div>
+      </mat-tab>
+
+      <!-- Archivio Pagamenti -->
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <div class="tab-label-content full-width">
+            <div class="icon-wrapper">
+              <mat-icon>archive</mat-icon>
+            </div>
+            <span class="card-title">Archivio Pagamenti</span>
+          </div>
+        </ng-template>
+        <div class="sezione">
+          <app-archivio></app-archivio>
+        </div>
+      </mat-tab>
+
+    </mat-tab-group>
+  </div>
+</div>

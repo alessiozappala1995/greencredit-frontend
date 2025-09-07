@@ -1,0 +1,62 @@
+mat-drawer {
+  width: 250px;
+  background-color: #1B5E20;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 60px;
+  bottom: 50px;
+  left: 0;
+  overflow-y: auto;
+}
+
+mat-drawer-content {
+  margin-left: 250px;
+  padding: 20px;
+  padding-bottom: 50px;
+  min-height: calc(100vh - 110px);
+}
+
+.logo {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  padding-left: 0;
+}
+
+.nav-links li {
+  margin-bottom: 20px;
+}
+
+.nav-links a {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-links a:hover {
+  background-color: #388e3c;
+}
+
+.nav-links a mat-icon,
+.nav-links a i {
+  margin-right: 15px;
+  font-size: 20px;
+}
+
+.nav-links .active a {
+  background-color: #388e3c;
+  font-weight: bold;
+}
+

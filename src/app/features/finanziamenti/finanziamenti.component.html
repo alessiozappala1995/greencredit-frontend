@@ -1,0 +1,46 @@
+<div class="eco-finanziamenti-container">
+  <h1>Finanziamenti Ecologici 🌱</h1>
+
+  <div *ngIf="finanziamenti.length > 0" class="section-row">
+
+    <!-- Colonna richieste -->
+    <div class="cards-column">
+      <div *ngFor="let f of finanziamenti" class="finanziamento-card">
+        <div class="header-row">
+          <h3>{{ f.nome }}</h3>
+          <button (click)="richiediFinanziamento(f)">Richiedi</button>
+        </div>
+        <p class="descrizione">{{ f.descrizione }}</p>
+        <div class="info-row">
+          <span><strong>Importo Max:</strong> €{{ f.importoMax }}</span>
+          <span *ngIf="f.tasso > 0"><strong>Tasso:</strong> {{ f.tasso }}%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Colonna grafici (verticale) -->
+    <div class="chart-column-vertical">
+      <div class="chart-block">
+        <h4>Importi Massimi Finanziamenti</h4>
+        <canvas id="finanziamentiChart"></canvas>
+      </div>
+      <div class="chart-block">
+        <h4>Distribuzione Finanziamenti</h4>
+        <canvas id="finanziamentiPieChart"></canvas>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<app-popup
+  *ngIf="isPopupVisible"
+  [title]="popupTitle"
+  [message]="popupMessage"
+  [popupBgColor]="popupColor"
+  [popupTextColor]="popupTest"
+  (close)="chiudiPopup()">
+</app-popup>
+
+<app-modal (confermato)="onConfermato($event)"></app-modal>

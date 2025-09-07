@@ -1,0 +1,147 @@
+<div class="carta-container">
+	<!-- RIGA CON CARTA E INFO -->
+	<div class="row g-4 align-items-start">
+
+		<!-- COLONNA SINISTRA: CARTA -->
+		<div class="col-md-6">
+			<mat-card class="descrizione-carta mx-auto" (click)="flipCard()">
+			<div class="credit-card" [class.flipped]="isCardFlipped">
+				<div class="card-front card-face p-3">
+					<div class="card-number">{{ carta.numero }}</div>
+					<div class="card-titolare">Titolare: {{ carta.titolare }}</div>
+					<div class="card-attr">Scadenza: {{ carta.scadenza | date:'dd/MM/yyyy'  }}</div>
+					<div class="card-attr">Iban: {{ carta.iban }}</div>
+					
+				</div>
+				<div class="card-back card-face p-3">
+					<div class="pin-label">PIN</div>
+					<div class="card-pin">{{ carta.pin }}</div>
+				</div>
+				
+			</div>
+			</mat-card>
+		</div>
+
+		<!-- COLONNA DESTRA: INFO CARTA -->
+		<div class="col-md-6">
+			<mat-card class="p-4 shadow-sm">
+			<h3>Informazioni Carta</h3>
+			<div class="conto-info">
+				<div class="row-info">
+					<span class="label">Numero Carta:</span> <span class="value">{{ carta.numero }}</span>
+				</div>
+				<div class="row-info">
+					<span class="label">Codice Utente:</span> <span class="value">{{ carta.codUtente }}</span>
+				</div>
+				<div class="row-info">
+					<span class="label">Titolare:</span> <span class="value">{{ carta.titolare }}</span>
+				</div>
+				<div class="row-info">
+					<span class="label">Scadenza:</span> <span class="value">{{ carta.scadenza | date:'dd/MM/yyyy' }}</span>
+				</div>
+				<div class="row-info">
+					<span class="label">Stato:</span> 
+					<span class="value" [ngClass]="carta.stato ? 'stato-attiva' : 'stato-disattivata'">
+  						{{ carta.stato ? 'Attiva' : 'Disattivata' }}
+					</span>
+						
+				</div>
+			</div>
+			</mat-card>
+		</div>
+	</div>
+
+	<!-- SEZIONE RICHIESTE  -->
+	<div class="mt-5">
+		<div class="row g-4">
+
+			<!-- Richiedi Nuova Carta -->
+			<div class="col-md-4">
+				<mat-card class="p-4 shadow-sm h-100">
+				<h3>Richiedi Nuova Carta</h3>
+				<p>Hai bisogno di una nuova carta? Invia una richiesta
+					direttamente da qui.</p>
+				<div class="mt-3">
+					<button mat-raised-button color="primary" (click)="richiediCarta()">
+						Richiedi Nuova Carta</button>
+				</div>
+				</mat-card>
+			</div>
+
+			<!-- Richiesta Blocco Carta -->
+			<div class="col-md-4">
+				<mat-card class="p-4 shadow-sm h-100">
+				<h3>Richiesta Blocco Carta</h3>
+				<p>In caso di smarrimento o uso sospetto, puoi bloccare la carta
+					in modo immediato.</p>
+				<div class="mt-3 danger">
+					<button mat-raised-button color="warn" (click)="bloccaCarta()" [disabled]="!carta.stato">Blocca Carta</button>
+				</div>
+				</mat-card>
+			</div>
+
+			<!-- Richiedi Nuova Carta -->
+			<div class="col-md-4">
+				<mat-card class="p-4 shadow-sm h-100">
+				<h3>Sostituzione Carta per Malfunzionamento</h3>
+				<p>Problemi tecnici con chip, banda magnetica o lettura.? Invia
+					una richiesta direttamente da qui.</p>
+				<div class="mt-3 warn">
+					<button mat-raised-button color="primary" (click)="richiediCarta()">
+						Invia Richiesta</button>
+				</div>
+				</mat-card>
+			</div>
+
+
+		</div>
+	</div>
+
+
+
+	<div class="mt-5">
+		<div class="row g-4">
+
+			<div class="col-md-4">
+				<mat-card class="p-4 shadow-sm h-100">
+				<h3>Richiedi Carta Prepagata</h3>
+				<p>Richiedi una carta ricaricabile per spese quotidiane</p>
+				<div class="mt-3">
+					<button mat-raised-button color="accent"
+						(click)="apriRichiestaCustom()">Invia Richiesta</button>
+				</div>
+				</mat-card>
+			</div>
+
+
+
+			<!-- Altro Tipo di Richiesta -->
+			<div class="col-md-4">
+				<mat-card class="p-4 shadow-sm h-100">
+				<h3>Altro Tipo di Richiesta</h3>
+				<p>Contatta l’assistenza o invia una richiesta personalizzata
+					per problemi specifici.</p>
+				<div class="mt-3">
+					<button mat-raised-button color="accent"
+						(click)="apriRichiestaCustom()">Invia Richiesta</button>
+				</div>
+				</mat-card>
+			</div>
+
+		</div>
+	</div>
+
+</div>
+
+
+<app-popup
+  *ngIf="isPopupVisible"
+  [title]="popupTitle"
+  [message]="popupMessage"
+  [popupBgColor]="popupColor"
+  [popupTextColor]="popupTest"
+  (close)="chiudiPopup()">
+</app-popup>
+
+<app-modal (confermato)="onConfermatoPin($event)"></app-modal>
+<app-modal (confermato)="onConfermato($event)"></app-modal>

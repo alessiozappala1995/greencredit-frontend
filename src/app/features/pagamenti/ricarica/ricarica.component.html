@@ -1,0 +1,86 @@
+<form class="row bonifico-card" [formGroup]="ricaricaForm"
+	(ngSubmit)="inviaRicarica()">
+	<div class="row">
+		<h2 class="saldo-title">Ricarica telefonica</h2>
+	</div>
+	<!-- Colonna sinistra: Dati pagamento -->
+	<div class="col-6">
+		<mat-card class="ricarica-card"> <mat-card-header>
+		<div class="header-content">
+			<h3 class="saldo-title">Dati pagamento</h3>
+		</div>
+		</mat-card-header> <mat-card-content> <!-- Campi statici (da query Angular) -->
+		<div class="form-group">
+			<label>Numero conto</label>
+			<div class="static-field">{{ numeroConto }}</div>
+		</div>
+		<div class="form-group">
+			<label>Utente</label>
+			<div class="static-field" *ngFor="let utente of contoInfo?.utenti">{{
+				utente?.nome }} {{ utente?.cognome }}</div>
+		</div>
+		<div class="form-group">
+			<label>Info conto</label>
+			<div class="static-field">{{ infoConto }}</div>
+		</div>
+		
+		<div class="form-group">
+			<label>Saldo disponibile</label>
+			<div class="static-field">{{ saldo | currency: 'EUR'}}</div>
+		</div>
+
+		<!-- Campi input -->
+		<div class="form-group">
+			<mat-form-field appearance="fill"> <mat-label>Causale</mat-label>
+			<input matInput matInput formControlName=causale name="causale" /> </mat-form-field>
+		</div>
+		</mat-card-content> </mat-card>
+	</div>
+	<!-- Colonna destra: Dati beneficiario -->
+	<div class="col-6">
+		<mat-card class="ricarica-summary-card"> <mat-card-header>
+		<div class="header-content">
+			<h3 class="saldo-title">Dati ricarica</h3>
+		</div>
+		</mat-card-header> <mat-card-content>
+
+		<div class="form-group">
+			<mat-form-field appearance="fill"> <mat-label>Numero
+			di telefono</mat-label> <input matInput formControlName="numero" name="numero" />
+			</mat-form-field>
+		</div>
+
+		<div class="form-group">
+			<mat-form-field appearance="fill"> <mat-label>Operatore</mat-label>
+				<mat-select formControlName="operatore" name="operatore" required>
+				<mat-option value="TIM">TIM</mat-option> 
+				<mat-option value="WIND">WIND</mat-option>
+				<mat-option value="WIND">ILIAD</mat-option>
+				<mat-option value="VODAFON">VODAFONE</mat-option> 
+				</mat-select> 
+			</mat-form-field>
+		</div>
+
+		<div class="form-group">
+			<mat-form-field appearance="fill"> <mat-label>Importo ricarica</mat-label> 
+			<input matInput formControlName="importo" name="numero" />
+			</mat-form-field>
+		</div>
+
+		<div class="form-group">
+			<button mat-raised-button color="primary" type="submit">Continua</button>
+		</div>
+		</mat-card-content> </mat-card>
+	</div>
+</form>
+
+<app-popup
+  *ngIf="isPopupVisible"
+  [title]="popupTitle"
+  [message]="popupMessage"
+  [popupBgColor]="popupColor"
+  [popupTextColor]="popupTest"
+  (close)="chiudiPopup()">
+</app-popup>
+
+<app-modal (confermato)="onConfermato($event)"></app-modal>

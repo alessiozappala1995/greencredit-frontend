@@ -1,0 +1,45 @@
+<div class="notifiche-container">
+  <h1>Comunicazioni 🌱</h1>
+
+  <div class="notifiche-grid">
+
+    <!-- Tabella Notifiche -->
+    <div class="notifiche-card">
+      <h2>📩 Ultime Notifiche</h2>
+      <div class="notifiche-table-container">
+        <table mat-table [dataSource]="dataSource" class="full-width-table">
+          <!-- Data -->
+          <ng-container matColumnDef="data">
+            <th mat-header-cell *matHeaderCellDef>Data</th>
+            <td mat-cell *matCellDef="let element">{{ element.notificationDate | date:'MMM dd, yyyy • HH:mm' }}</td>
+          </ng-container>
+
+          <!-- Messaggio -->
+          <ng-container matColumnDef="messaggio">
+            <th mat-header-cell *matHeaderCellDef>Messaggio</th>
+            <td mat-cell *matCellDef="let element">{{ element.messaggio }}</td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+      </div>
+    </div>
+
+    <!-- Avvisi Importanti -->
+    <div class="avvisi-card">
+      <h2>⚠️ Avvisi Importanti</h2>
+      <div class="avvisi-list">
+        <div *ngFor="let alert of avvisi" class="avviso-item" [attr.color]="alert.color">
+          <mat-icon>{{ alert.icon }}</mat-icon>
+          <div class="avviso-text">
+            <h4>{{ alert.title }}</h4>
+            <p>{{ alert.desc }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
